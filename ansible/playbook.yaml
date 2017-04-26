@@ -1,0 +1,25 @@
+- name: Nginx Example
+  hosts: all
+  tasks:
+    - name: deploy public key JFA
+      authorized_key:
+        key: 'ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIRAzjzasfdfp6sRL9fJgTufLy0TbnQs/YR6di0iIpd3lhebLgoT8JFdVoijNlK7vENGoAUW1IeUPJilpEaCVF0= jfader@fader-t510'
+        user: core
+
+    - name: Start docker
+      service:
+        name: docker
+        state: started
+
+    - name: pull nginx docker image
+      docker_image:
+        name: nginx
+        tag: 1.13.0
+        state: present
+
+    - name: launch nginx container
+      docker_container:
+        image: "nginx:1.13.0"
+        name: "example-nginx"
+        ports: "8080:80"
+        state: started
