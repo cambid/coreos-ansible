@@ -34,7 +34,6 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "ansible" do |ansible2|
-    ansible2.sudo = true
     ansible2.playbook = "ansible/playbook.yaml"
     ansible2.extra_vars = {
     ansible_ssh_user:"core",
