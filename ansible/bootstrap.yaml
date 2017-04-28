@@ -2,7 +2,7 @@
 - hosts: all
   gather_facts: False
   roles:
-    - defunctzombie.coreos-bootstrap
+    - vmware.ansible-coreos-bootstrap
   tasks:
     - name: Install docker-py
       pip:

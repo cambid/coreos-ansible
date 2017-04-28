@@ -1,3 +1,6 @@
 [submodule "ansible/roles/defunctzombie.coreos-bootstrap"]
 	path = ansible/roles/defunctzombie.coreos-bootstrap
 	url = https://github.com/defunctzombie/ansible-coreos-bootstrap.git
+[submodule "ansible/roles/vmware.ansible-coreos-bootstrap"]
+	path = ansible/roles/vmware.ansible-coreos-bootstrap
+	url = https://github.com/vmware/ansible-coreos-bootstrap.git
