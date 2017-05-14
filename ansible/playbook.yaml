@@ -22,5 +22,13 @@
       docker_container:
         image: "nginx:1.13.0"
         name: "example-nginx"
-        ports: "8080:80"
         state: started
+
+    - name: launch traefik container
+      docker_container:
+        image: "traefik:latest"
+        name: "traefik"
+        ports: "80:80,443:443"
+        state: started
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
