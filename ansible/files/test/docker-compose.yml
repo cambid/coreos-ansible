@@ -3,6 +3,7 @@ version: '2'
 services:
   whoami:
     image: emilevauge/whoami
+    restart: always
     networks:
       - web
     labels:
