@@ -12,23 +12,20 @@
         name: docker
         state: started
 
-    - name: pull nginx docker image
-      docker_image:
-        name: nginx
-        tag: 1.13.0
-        state: present
-
-    - name: launch nginx container
-      docker_container:
-        image: "nginx:1.13.0"
-        name: "example-nginx"
-        state: started
+    - name: "copy docker-compose-files"
+      copy:
+        dest: /tmp
+        src: files
 
     - name: launch traefik container
-      docker_container:
-        image: "traefik:latest"
-        name: "traefik"
-        ports: "80:80,443:443"
-        state: started
-        volumes:
-          - /var/run/docker.sock:/var/run/docker.sock
+      docker_service:
+        project_src: /tmp/files/traefik
+        restarted: true
+        state: present
+
+    - name: start two whoami containers
+      docker_service:
+        project_src: /tmp/files/test
+        scale:
+          whoami: 2
+        state: present
