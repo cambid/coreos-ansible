@@ -18,6 +18,7 @@
       with_items:
         - docker
         - docker-compose
+        - hvac
 
   vars:
     - coreos_pypy_version: "5.7.1"

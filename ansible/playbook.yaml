@@ -12,6 +12,10 @@
         name: docker
         state: started
 
+    - name: "TEST"
+      debug:
+        msg: "{{ lookup('hashi_vault', 'secret=secret/hello:value') }}"
+
     - name: "copy docker-compose-files"
       copy:
         dest: /tmp
