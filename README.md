@@ -4,6 +4,7 @@
 - Vagrant
 - Ansible
 - Vault from https://www.vaultproject.io/
+- python-module hvac
 
 ## Setup vault for development
 ```
